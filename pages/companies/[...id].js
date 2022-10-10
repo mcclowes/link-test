@@ -1,8 +1,25 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../../styles/Home.module.css'
 import Link from 'next/link'
+
+import { CodatLink } from '@codat/link-sdk';
+import '../../node_modules/@codat/link-sdk/index.css';
+
+const AuthFlow = (id) => {
+  const [active, setActive] = useState(false)
+
+  if(active===true) {
+    return <CodatLink
+      companyId={id}
+      onSuccess={() => alert('success')}
+      onError={() => alert('error')}
+    />
+  }
+
+  return <button onClick={() => setActive(true)}>Hello</button>
+}
 
 const Company = ({company}) => {
   return (
@@ -30,6 +47,9 @@ const Company = ({company}) => {
         <p><b>Connections:</b> {company.platform}</p>
         <p><b>Last pull:</b> {company.lastSync}</p>
         <p><b>Created:</b> {company.created}</p>
+
+
+        <AuthFlow id={company.id}/>
 
         <br/>
 

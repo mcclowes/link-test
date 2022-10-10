@@ -10,6 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@codat/link-sdk": "^0.0.1-alpha.33",
     "cors": "^2.8.5",
     "next": "12.2.3",
     "react": "18.2.0",
